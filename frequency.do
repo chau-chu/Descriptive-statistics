@@ -1,4 +1,4 @@
-use 2005-2007.dta, clear
+use 2005-2007.dta, clear   // Dataset created from Vietnamdata>merge_data.do 
 *===================================================================*
 *=========   Find number of firms existing in all waves    =========*
 *===================================================================*
