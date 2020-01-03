@@ -11,7 +11,6 @@ foreach var of varlist output sales totalasset totaldebt {
   egen `var'cut= cut(`var'), at(0,10,25,50,75,90,101) /* Note: 0 means 0 to 10, but not include 10*/
 }
 
-*Table 2 - Panel A
 eststo finance1: quietly estpost tab outputcut
 eststo finance2: quietly estpost tab salescut
 eststo finance3: quietly estpost tab totalassetcut
