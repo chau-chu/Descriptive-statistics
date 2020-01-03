@@ -5,7 +5,7 @@ use 2005-07.dta, clear //dataset created from repository Vietnamdata>merge_data.
 *******************************************************
 *========     Correlation Matrix      ========*
 *******************************************************
-g lnoutput=log(output+1)  //tranform variables in natural logarithm
+g lnoutput=log(output+1)  //transform variables in natural logarithm
 g lncapital=log(capital+1)
 g lnlabour=log(labour+1)
 
