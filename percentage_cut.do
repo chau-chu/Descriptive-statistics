@@ -24,6 +24,15 @@ _pctile lnoutput, p(5 10 25 50 75 90 95)
 forv i=1/7 {
 	gen lnoutputq_`i'=r(r`i')
 }
+
+gen quart=1 if lnoutput<=lnoutputq_1
+forv q=2/7 {
+	local e=`q'-1
+	replace quart=`q' if lnoutput>lnoutputq_`e' & lnoutput<=lnoutputq_`q'
+}
+replace quart=8 if lnoutput>lnoutputq_7 
+
+/* Lines 28-33 can be replaced by following lines: 
 gen quart=1 if lnoutput<=lnoutputq_1
 replace quart=2 if lnoutput>lnoutputq_1 & lnoutput<=lnoutputq_2
 replace quart=3 if lnoutput>lnoutputq_2 & lnoutput<=lnoutputq_3
@@ -32,6 +41,6 @@ replace quart=5 if lnoutput>lnoutputq_4 & lnoutput<=lnoutputq_5
 replace quart=6 if lnoutput>lnoutputq_5 & lnoutput<=lnoutputq_6
 replace quart=7 if lnoutput>lnoutputq_6 & lnoutput<=lnoutputq_7
 replace quart=8 if lnoutput>lnoutputq_7 
-
+*/
 su lnoutputq_*
 tabstat lnoutput, stat (n mean min max sd p50) by(quart) 
